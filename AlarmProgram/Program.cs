@@ -25,34 +25,5 @@ namespace AlarmProgram
             var stateManager = new StateManager();
             stateManager.Run();            
         }
-
-        static void RunAlarmTimer()
-        {
-            var startTime = DateTime.Now;
-            var currentTime = DateTime.Now;
-            while (currentTime < startTime.AddHours(8))
-            {
-                Console.WriteLine($"working {DateTime.Now}");
-                Thread.Sleep(TimeSpan.FromMinutes(40));
-                foreach(var item in Enumerable.Repeat(0, 3))
-                {
-                    SystemSounds.Beep.Play();
-                    Thread.Sleep(3000);
-                }
-
-                Console.WriteLine($"resting {DateTime.Now}");
-                Thread.Sleep(RestIntervalFactory.Create());
-                foreach (var item in Enumerable.Repeat(0, 3))
-                {
-                    SystemSounds.Beep.Play();
-                    Thread.Sleep(3000);
-                }
-                currentTime = DateTime.Now;
-            }
-
-            Console.WriteLine($"the end of the work day {DateTime.Now}");
-        }
-
-
     }
 }
