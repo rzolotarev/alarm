@@ -24,6 +24,7 @@ namespace AlarmProgram.AlarmStates
 
         public bool Run()
         {
+            resetEvent.Reset();
             Console.WriteLine($"working {DateTime.Now}");             
             _timer.Interval = Period * 40 * 1000;
             _timer.Elapsed += OnTimedEvent;
