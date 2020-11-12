@@ -12,7 +12,7 @@ namespace AlarmProgram.AlarmStates
     public class WorkState : IAlarmState
     {
         private readonly StateManager _manager;        
-        private static ManualResetEvent resetEvent = new ManualResetEvent(false);
+        private static ManualResetEvent resetEvent = new ManualResetEvent(false);                
 
         public WorkState(StateManager manager)
         {
@@ -24,15 +24,15 @@ namespace AlarmProgram.AlarmStates
         public bool Run()
         {
             resetEvent.Reset();
-            Console.WriteLine($"working {DateTime.Now}");
-            using (var timer = new System.Timers.Timer(Period * 40 * 1000))
+            Console.WriteLine($"time to work {DateTime.Now}");
+            using (var timer = new System.Timers.Timer(Period * 60 * 1000))
             {
                 timer.AutoReset = false;
                 timer.Elapsed += OnTimedEvent;
                 timer.Start();
                 resetEvent.WaitOne();
-            }
-            _manager.State = new RelaxState(_manager);
+            }            
+            _manager.State = new RelaxState(_manager);            
             return true;
         }
 

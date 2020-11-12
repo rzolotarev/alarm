@@ -19,13 +19,13 @@ namespace AlarmProgram.AlarmStates
             this._manager = manager;
         }
 
-        public int Period => 5;        
+        public int Period => 10;        
 
         public bool Run()
         {
             resetEvent.Reset();
 
-            Console.WriteLine($"Relax {DateTime.Now}");
+            Console.WriteLine($"time to relax {DateTime.Now}");
             using (var timer = new System.Timers.Timer(Period * 60 * 1000))
             {
                 timer.AutoReset = false;                
