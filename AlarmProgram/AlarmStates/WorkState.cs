@@ -12,7 +12,9 @@ namespace AlarmProgram.AlarmStates
     public class WorkState : IAlarmState
     {
         private readonly StateManager _manager;        
-        private static ManualResetEvent resetEvent = new ManualResetEvent(false);                
+        private static ManualResetEvent resetEvent = new ManualResetEvent(false);
+        const int maxExcercises = 10;
+        private static int excercies = 0;
 
         public WorkState(StateManager manager)
         {
@@ -31,9 +33,10 @@ namespace AlarmProgram.AlarmStates
                 timer.Elapsed += OnTimedEvent;
                 timer.Start();
                 resetEvent.WaitOne();
-            }            
-            _manager.State = new RelaxState(_manager);            
-            return true;
+            }
+            excercies++;
+            _manager.State = new RelaxState(_manager);
+            return excercies <= 10;            
         }
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
