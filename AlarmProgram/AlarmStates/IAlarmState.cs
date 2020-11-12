@@ -8,7 +8,6 @@ namespace AlarmProgram.AlarmStates
 {
     public interface IAlarmState
     {
-        int Period { get; }        
         bool Run();
     }
 }
