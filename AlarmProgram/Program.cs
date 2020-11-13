@@ -13,17 +13,9 @@ namespace AlarmProgram
     class Program
     {
         static void Main(string[] args)
-        {            
-            var alarmThread = new Thread(() => AlarmHandler());
-
-            alarmThread.Start();
-            alarmThread.Join();
-        }
-
-        static void AlarmHandler()
         {
             var stateManager = new StateManager();
-            stateManager.Run();            
+            stateManager.Run();
         }
     }
 }
