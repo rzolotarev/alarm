@@ -21,7 +21,7 @@ namespace AlarmProgram.AlarmStates
             _manager = manager;
         }
 
-        public int Period => 40;        
+        public int Period => 1;        
 
         public bool Run()
         {
