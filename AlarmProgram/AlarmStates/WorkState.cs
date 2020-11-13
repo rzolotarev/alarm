@@ -13,7 +13,7 @@ namespace AlarmProgram.AlarmStates
     {
         private readonly StateManager _manager;        
         private static ManualResetEvent resetEvent = new ManualResetEvent(false);
-        const int maxExcercises = 10;
+        const int maxExcercises = 9;
         private static int excercies = 0;
 
         public WorkState(StateManager manager)
@@ -36,7 +36,7 @@ namespace AlarmProgram.AlarmStates
             }
             excercies++;
             _manager.State = new RelaxState(_manager);
-            return excercies <= 10;            
+            return excercies <= maxExcercises;            
         }
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
